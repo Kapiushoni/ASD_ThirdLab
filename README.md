@@ -35,25 +35,12 @@ Tested with **500,000 iterations** in a Windows environment:
 ### Prerequisites
 * A C++ compiler supporting **C++17** or higher (e.g., GCC/MinGW).
 
-### Installation & Execution
+## 🚀 Installation & Execution
+
+Follow these steps to build and run the benchmark on your local machine:
+
 1. **Clone the repository:**
    ```bash
    git clone [https://github.com/your-username/hash-table-analysis.git](https://github.com/your-username/hash-table-analysis.git)
    cd hash-table-analysis
-Compile all source files:
-
-Bash
-g++ *.cpp -o main
-Run the benchmark:
-
-Bash
-./main
-👤 Author
-Artur Halechian
-
 University: Kyiv Polytechnic Institute (KPI), IPSA
-
-Focus: Backend Development (Python/C++), AI & Systems Programming
-
-
-Тепер твій GitHub буде виглядати солідно, особливо з огляду на те, що ти цілишся в Junior
