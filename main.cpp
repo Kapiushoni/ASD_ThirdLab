@@ -1,6 +1,8 @@
 #include <iostream>
 #include <ctime>
 #include <unordered_map>
+#include <string>
+#include <cmath>
 #include "HashTable.h"
 #include "Structures.h"
 
@@ -101,6 +103,42 @@ stlFoundAmount)
 }
 
 
+int rabinKarp(string text, string pattern) {
+    int n = text.length();
+    int m = pattern.length();
+    if (m > n) return -1;
+
+    const int p = 31; // Просте число для хешу
+    const int q = 1e9 + 7; // Модуль
+
+    long long patternHash = 0;
+    long long currentHash = 0;
+    long long p_pow = 1;
+
+    // Рахуємо хеш паттерна та першого вікна тексту
+    for (int i = 0; i < m; i++) {
+        patternHash = (patternHash * p + pattern[i]) % q;
+        currentHash = (currentHash * p + text[i]) % q;
+        if (i < m - 1) p_pow = (p_pow * p) % q;
+    }
+
+    for (int i = 0; i <= n - m; i++) {
+        // Якщо хеші збіглися — перевіряємо символи (про всяк випадок через колізії)
+        if (patternHash == currentHash) {
+            if (text.substr(i, m) == pattern) return i;
+        }
+
+        // Рахуємо хеш для наступного вікна за O(1)
+        if (i < n - m) {
+            currentHash = (currentHash - text[i] * p_pow % q + q) % q;
+            currentHash = (currentHash * p + text[i + m]) % q;
+        }
+    }
+
+    return -1;
+}
+
+
 
 // ==========================================================
 
@@ -127,6 +165,9 @@ int main() {
         cout << "------------------------------------------------" << endl;
         cout << "Результат: Є розбіжності з STL або помилка в логіці." << endl;
     }
+
+    // Тест Рабіна-Карпа
+    cout << "Rabin-Karp test: " << rabinKarp("Hello, Artur, enjoy your iPhone!", "iPhone") << endl;
 
     return 0;
 }
