@@ -123,7 +123,7 @@ int rabinKarp(string text, string pattern) {
     }
 
     for (int i = 0; i <= n - m; i++) {
-        // Якщо хеші збіглися — перевіряємо символи (про всяк випадок через колізії)
+        // Якщо хеші збіглися - перевіряємо символи (про всяк випадок через колізії)
         if (patternHash == currentHash) {
             if (text.substr(i, m) == pattern) return i;
         }
@@ -138,9 +138,6 @@ int rabinKarp(string text, string pattern) {
     return -1;
 }
 
-
-
-// ==========================================================
 
 int main() {
     // Встановлюємо кодування для коректного відображення тексту в консолі (якщо Windows)

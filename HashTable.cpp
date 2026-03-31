@@ -18,7 +18,7 @@ float HashTable::getLoadFactor() {
 }
 
 void HashTable::insert(long long key, Data value) {
-    // 1. Перевіряємо завантаженість. Якщо вона завелика — розширюємося.
+    // 1. Перевіряємо завантаженість. Якщо вона завелика - розширюємося.
     if (getLoadFactor() > maxLoadFactor) {
         rehash();
     }
@@ -52,7 +52,7 @@ void HashTable::erase(long long key) {
     }
 }
 
-// ПУНКТ 3: Динамічне розширення (Оптимізована версія)
+// Динамічне розширення (Оптимізована версія)
 void HashTable::rehash() {
     int oldM = M;
     LinkedList* oldArray = bucketsArray;
